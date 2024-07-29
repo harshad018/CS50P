@@ -9,7 +9,7 @@ def get_level():
     while True:
         level = input("Level: ")
 
-        if int(level) == 1 :
+        if int(level) == 1 or int(level) ==2 or int(level) == 3:
             return level
             
         else:
@@ -23,14 +23,20 @@ def generate_integer(level):
         if int(level) == 1:
             x = random.randint(1,9)
             y = random.randint(1,9)
-            attempt = 0
+            
+        elif int(level) == 2:
+            x = random.randint(10,99)
+            y = random.randint(10,99)
 
-            while attempt < 3:
-                try:
-                    u_ans = input(f"{x} + {y} = ")
-                except ValueError:
-                    continue
+        elif int(level) == 3:
+            x = random.randint(100,999)
+            y = random.randint(100,900)
 
+        attempt = 0
+        while attempt < 3:
+            
+            u_ans = input(f"{x} + {y} = ")
+            try:
                 if x + y == int(u_ans):
                     break
                     
@@ -38,6 +44,9 @@ def generate_integer(level):
                     print("EEE")
                     
                     attempt = attempt + 1
+            except ValueError:
+                print("EEE")
+                attempt = attempt + 1
         if attempt == 3:
             print(f"{x} + {y} = {x+y}")
 
